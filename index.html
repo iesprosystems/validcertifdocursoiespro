@@ -7,6 +7,7 @@ Versão 02
 Eliminação de data e hora automática.
 Mensagem na tela solicitando digitação de data e hora conforme o certificado do aluno.
 -->
+
 <!DOCTYPE html> 
 <html lang="pt-BR">
 <head>
@@ -522,13 +523,17 @@ Mensagem na tela solicitando digitação de data e hora conforme o certificado d
 			document.getElementById("horaDigitada").value = "";
 		}
 
-		function abrirModal() {
-			document.getElementById("myModal").style.display = "flex";
-		}
+function abrirModal() {
+	const modal = document.getElementById("myModal");
+	const validacao = document.getElementById("validacao");
+	validacao.innerText = "⚠️ Leitura completa!\n\nAgora informe a data e a hora conforme o certificado do aluno.";
+	modal.style.display = "flex";
+}
 
-		function fecharModal() {
-			document.getElementById("myModal").style.display = "none";
-		}
+function fecharModal() {
+	const modal = document.getElementById("myModal");
+	modal.style.display = "none";
+}
 
 
 		function ValidarCodigo() {

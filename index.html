@@ -2,6 +2,10 @@
 Somente data, hora e curso - validação 
 Criao por Moisés Lobo D'Almada Alves Pereira
 moiseslobopvh@gmail.com
+
+Versão 02
+Eliminação de data e hora automática.
+Mensagem na tela solicitando digitação de data e hora conforme o certificado do aluno.
 -->
 <!DOCTYPE html> 
 <html lang="pt-BR">
@@ -408,12 +412,14 @@ moiseslobopvh@gmail.com
     				qrbox: 250,
     			},
     			qrCodeMessage => {
-    				// ⚠️ apturar o valor lido do QR Code:
+    				// ⚠️ Capturar o valor lido do QR Code:
     				document.getElementById("codigo").value = qrCodeMessage;
                     pararLeitor();
     				// Exibe mensagem ao usuário
     				mensagemLeitura.style.display = "block";
-    				mensagemLeitura.textContent = "Leitura completa";
+				mensagemLeitura.innerText = "⚠️Leitura completa \n Agora informe a data e a hora conforme de acordo com o certificado.";
+				abrirModal();
+				return;
     
     			},
     			errorMessage => {
@@ -524,16 +530,6 @@ moiseslobopvh@gmail.com
 			document.getElementById("myModal").style.display = "none";
 		}
 
-		// Preenche automaticamente data e hora ao abrir a página
-		function preencherDataHoraAtuais() {
-			const agora = new Date();
-			const dataAtual = agora.toLocaleDateString('pt-BR');
-			const horaAtual = agora.toLocaleTimeString('pt-BR');
-
-			document.getElementById("dataDigitada").value = dataAtual;
-			document.getElementById("horaDigitada").value = horaAtual;
-		}
-
 
 		function ValidarCodigo() {
 			const input = document.getElementById("codigo").value.trim();
@@ -622,7 +618,6 @@ moiseslobopvh@gmail.com
 			}
 		}
 
-		window.onload = preencherDataHoraAtuais;
 		
 	</script>
 </body>

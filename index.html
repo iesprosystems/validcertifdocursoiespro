@@ -358,7 +358,8 @@ Mensagem na tela solicitando digitação de data e hora conforme o certificado d
 		
 
 		<label for="codigo">Código do Certificado:</label>
-		<input type="text" id="codigo" placeholder="Código de validação do certificado.">
+		<input type="text" id="codigo" placeholder="Código de validação do certificado." style="background-color: #ffe5e5;">
+
 
 		<div class="btn-group">
 			<button onclick="limparCodigo()">Limpar Código</button>
@@ -426,6 +427,7 @@ Mensagem na tela solicitando digitação de data e hora conforme o certificado d
     				document.getElementById("codigo").value = qrCodeMessage;
                     		pararLeitor();
     				// Exibe mensagem ao usuário
+				CordoCampo("codigo", "#e5ffe5"); //"#e5ffe5" verde suave
 				exibirCaixaMensagem("⚠️ Leitura completa!\n\nAgora informe a data e a hora conforme o certificado do aluno.");
 				return;
     
@@ -553,6 +555,9 @@ Mensagem na tela solicitando digitação de data e hora conforme o certificado d
 			caixa.style.display = "none";
 		}
 
+		function CordoCampo(myfield, cor) {
+			document.getElementById(myfield).style.backgroundColor = cor; 
+		}
 		
 
 		function ValidarCodigo() {
@@ -642,7 +647,10 @@ Mensagem na tela solicitando digitação de data e hora conforme o certificado d
 			}
 		}
 
-		
+		window.onload = function () {
+			//Muda a cor do campo código de validação para vermelho suave, logo que o sistema abre
+			CordoCampo("codigo", "#ffe5e5"); // vermelho suave
+		};		
 	</script>
 </body>
 </html>

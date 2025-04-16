@@ -416,7 +416,7 @@ Mensagem na tela solicitando digitação de data e hora conforme o certificado d
     		html5QrCode = new Html5Qrcode("leitor-qr");
     
     		html5QrCode.start(
-    			{ facingMode: "environment" }, // câmera traseira por padrão
+    			{ facingMode: "environment" }, // câmera traseira por padrão.
     			{
     				fps: 10,
     				qrbox: 250,
@@ -424,7 +424,7 @@ Mensagem na tela solicitando digitação de data e hora conforme o certificado d
     			qrCodeMessage => {
     				// ⚠️ Capturar o valor lido do QR Code:
     				document.getElementById("codigo").value = qrCodeMessage;
-                    pararLeitor();
+                    		pararLeitor();
     				// Exibe mensagem ao usuário
 				exibirCaixaMensagem("⚠️ Leitura completa!\n\nAgora informe a data e a hora conforme o certificado do aluno.");
 				return;
@@ -438,6 +438,7 @@ Mensagem na tela solicitando digitação de data e hora conforme o certificado d
     			console.error("Erro ao iniciar câmera:", err);
     		});
     	}
+		
     
     	function pararLeitor() {
             		if (html5QrCode) {

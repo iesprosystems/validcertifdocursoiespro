@@ -345,6 +345,8 @@ Mensagem na tela solicitando digitação de data e hora conforme o certificado d
         <button id="btn-qr" class="btn-validar-codigo">📷 Ler QR Code</button>
         <div id="leitor-qr" style="display:none; margin-top: 15px;"></div>
         <p id="mensagem-leitura" style="display: none; color: green; font-weight: bold;">Leitura completa</p>
+	<div id="mensagemUsuario" style="display: none; padding: 1em; margin-top: 1em; border: 1px solid #ccc; background-color: #fdf9c4; color: #333; border-radius: 8px;">
+	</div>
 
 		
 
@@ -417,9 +419,7 @@ Mensagem na tela solicitando digitação de data e hora conforme o certificado d
     				document.getElementById("codigo").value = qrCodeMessage;
                     pararLeitor();
     				// Exibe mensagem ao usuário
-    				mensagemLeitura.style.display = "block";
-				mensagemLeitura.innerText = "⚠️Leitura completa \n Agora informe a data e a hora conforme de acordo com o certificado.";
-				abrirModal();
+				exibirMensagemUsuario("⚠️ Leitura completa!\n\nAgora informe a data e a hora conforme o certificado do aluno.");
 				return;
     
     			},
@@ -523,18 +523,24 @@ Mensagem na tela solicitando digitação de data e hora conforme o certificado d
 			document.getElementById("horaDigitada").value = "";
 		}
 
-function abrirModal() {
-	const modal = document.getElementById("myModal");
-	const validacao = document.getElementById("validacao");
-	validacao.innerText = "⚠️ Leitura completa!\n\nAgora informe a data e a hora conforme o certificado do aluno.";
-	modal.style.display = "flex";
-}
+		function abrirModal() {
+			const modal = document.getElementById("myModal");
+			const validacao = document.getElementById("validacao");
+			validacao.innerText = "⚠️ Leitura completa!\n\nAgora informe a data e a hora conforme o certificado do aluno.";
+			modal.style.display = "flex";
+		}
+		
+		function fecharModal() {
+			const modal = document.getElementById("myModal");
+			modal.style.display = "none";
+		}
 
-function fecharModal() {
-	const modal = document.getElementById("myModal");
-	modal.style.display = "none";
-}
-
+		function exibirMensagemUsuario(mensagem) {
+			const msgBox = document.getElementById("mensagemUsuario");
+			msgBox.innerText = mensagem;
+			msgBox.style.display = "block";
+		}
+		
 
 		function ValidarCodigo() {
 			const input = document.getElementById("codigo").value.trim();
@@ -601,7 +607,7 @@ function fecharModal() {
                 }
 
 
-				validacao.className = "valido";
+		validacao.className = "valido";
 
 
                 //diversos ícones para opção
